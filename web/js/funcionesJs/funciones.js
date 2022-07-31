@@ -50,35 +50,40 @@
 
 
 
+
 /* 
     Este codigo se encarga del cambio de estado del usuario por medio del click en el boton
 */  
     function postFuncion(){
-        var form = $("#formCrearUsuario").serialize();
-            postCrearUsuario(form);
 
-
+      var form = $("#formCrearUsuario").serialize();
+      postCrearUsuario(form);
     }
 
     function postCrearUsuario(form){
       
       $.ajax({
-            type:"get",
+            type:"post",
             url: "index.php?modulo=Usuario&controlador=Usuario&funcion=postCrearUsuario",
             data: form,
             success:function(result){
-            alert("entra");
-                alertProcess('Notificaci�n',"Se registro correctamente",'success');
-                alert("funciona aqui");
-                setTimeout(location.href='index.php?modulo=Usuario&controlador=Usuario&funcion=listarUsuario', 5000);
-                
+                alertProcess('Notificacion',"Se registro correctamente",'success');
+                url = 'index.php?modulo=Usuario&controlador=Usuario&funcion=listarUsuario';
+                setTimeout(redirect(url)
+                ,4000);
+                   
+            }, error :function(result){
+                alertProcess('Notificacion',"No se pudo registrar",'error');
             }
         });
 
         
     }
-    
-    function eliminarHistoria(id){
+    function redirect(url,){
+      window.location.replace(url);
+    }
+
+    function eliminarUsuarios(id){
     var id_dato = id;
     Swal.fire({
       title: 'seguro quieres eliminar?',
@@ -90,24 +95,22 @@
       confirmButtonText: 'Si, eliminar esto!'
         }).then((result) => {
           if (result.isConfirmed) {
-            eliminarHistorialClinica(id_dato);
-            Swal.fire(
-              'Eliminado!',
-              'La Historia ha sido eliminado.',
-              'success'
-             )
+            eliminarUsuario(id_dato);
           }
     })
     }
-    function eliminarHistorialClinica(id){
+    function eliminarUsuario(id){
  
-      var url = "index.php?modulo=HistoriaClinica&controlador=HistoriaClinica&funcion=eliminarHistorial&eliminarHistorial";
-        $.ajax({
-            type:"GET",
+      var url = "index.php?modulo=Usuario&controlador=Usuario&funcion=postEliminarUsuario";
+      $.ajax({
+            type:"POST",
             url:url,
-            data:"id_historiaclinica="+id,
+            data:"id="+id,
             success:function(respuesta){
-                setTimeout('document.location.reload()',1000);
+              alertProcess('Notificacion',"Se elimino el registro",'success');
+                setTimeout('document.location.reload()',2000);
+            },error:function(respuesta){
+                alertProcess('Notificacion',"No se pudo eliminar",'error');
             }
         });
     }

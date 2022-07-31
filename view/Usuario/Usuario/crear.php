@@ -1,5 +1,5 @@
 
-<form rule="formCrearUsuario" name="formCrearUsuario" id="formCrearUsuario" method="post" action="<?php echo getUrl("Usuario","Usuario","postCrearUsuario"); ?>" enctype="multipart/form-data">
+<form rule="formCrearUsuario" name="formCrearUsuario" id="formCrearUsuario" method="post" enctype="multipart/form-data">
     
     
         <div class="form-group">
@@ -69,42 +69,32 @@
                     <textArea class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" required="required"></textArea>
                     <p class="help-block">Descripcion de experiencia empleado.</p>
 
+                <div class="form-group col-md-5">
+                
+                    <label>Roles *</label>
+                    
+                    <?php foreach ($roles as $key => $val) { ?>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="rol" value="<?php echo $val['id']; ?>" checked>
+                                <?php echo $val['nombre']; ?>
+                            </label>
+                        </div>
+                    <?php } ?>
+                    
+
+             </div>
+            
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" name="boletin" value="1" checked>
                             Deseo recibir boletin informativo
                         </label>
-                </div>
-                </div>
-
-                <div class="form-group col-md-5">
-                <!-- campos checkbox -->
-                    <label>Roles *</label>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="rol1" id="rol1" value="1" checked>
-                            Profesional De Proyectos - Desarrollador
-                        </label>
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="rol2" id="rol2" value="2" >
-                            Gerente Estrategico
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="rol3" id="rol3" value="3">
-                            Auxiliar administrativo
-                        </label>
-                    </div>
-                </div>
-
-             </div>
-    
+            
             <div class="input-group">  
                 <div class="form-group col-md-5">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary" onclick="postFuncion()">Guardar</button>
                 </div>
             </div>
         </div>

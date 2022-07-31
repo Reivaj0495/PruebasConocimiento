@@ -13,13 +13,28 @@ class UsuarioController{
     public function crearUsuario(){
         $Gst = new GstUsuario();
         $datos = $Gst->getAreas();
+        $roles = $Gst->getRoles();
         include_once '../view/Usuario/Usuario/crear.php';
     }
 
     public function postCrearUsuario(){
         $Gst = new GstUsuario();
         $datos = $Gst->postIngresarEmpleado($_POST);
-        $this->listarUsuario();
+        return JSON_encode($datos);
+    }
+
+    public function editarUsuario(){
+        $Gst = new GstUsuario();
+        $datos = $Gst->ConsultarEmpleado($_POST['id']);
+        $datos = $Gst->getAreas();
+        $roles = $Gst->getRoles();
+        include_once '../view/Usuario/Usuario/editar.php';
+    }
+
+    public function postEliminarUsuario(){
+        $Gst = new GstUsuario();
+        $datos = $Gst->eliminarUsuario($_POST['id']);
+        return JSON_encode($datos);
     }
 
 

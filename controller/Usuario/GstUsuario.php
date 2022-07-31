@@ -89,27 +89,18 @@ Class GstUsuario{
         $email = $datos['email'];
         $sexo = $datos['sexo'];
         $area_id = $datos['area'];
-        
-        if($datos['boletin'] == null){
-            $boletin = 0;
-        }else{
-            $boletin = $datos['boletin'];
-        }
+        $boletin = $datos['boletin'];
         $descripcion = $datos['descripcion'];
 
         $sql ="insert into empleado values ('','$nombre','$email','$sexo',$area_id,$boletin,'$descripcion')";
         $resultado = $ObjFuncion->insertar($sql); 
         return $resultado;
-
-
-        $this->listarUsuario();
     }
 
-    public function ConsultarDatosId($id){
+    public function getRoles(){
         $ObjFuncion = new UsuarioModel();
-        $sql = "select * from historia_clinica where id=".$id;
+        $sql = "select id,nombre from roles";
         $datos = $ObjFuncion->consultarArray($sql);
-        $datos = $this->getNombreMascota($datos);
         return $datos;
     }
 
@@ -123,14 +114,15 @@ Class GstUsuario{
         return $resultado;
     }
 
-    public function eliminarHistorial($datos){
+    public function eliminarUsuario($id){
         $ObjFuncion = new UsuarioModel();
-        $id = $datos['id'];
-        $sql ="delete from detalle_historia_clinica where id_historia_clinica=".$id;
-        $resultado1 = $ObjFuncion->eliminar($sql);
-        $id_mascota = $datos['id_mascota'];
-        $sql ="delete from historia_clinica where id=".$id." AND id_mascota=".$id_mascota;
-        $resultado = $ObjFuncion->eliminar($sql);
+        $sql ="delete from empleado where id=".$id;
+
+        try{
+            $resultado = $ObjFuncion->eliminar($sql);
+        }catch(e){
+            echo "Error al eliminar";
+        }
         return $resultado;
         
     }

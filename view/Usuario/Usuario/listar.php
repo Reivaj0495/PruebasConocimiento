@@ -34,34 +34,10 @@
                         echo "<td>".$value['area_descripcion']."</td>";
                         echo "<td>".$value['boletin']."</td>";
                         echo "<td> <a href='".getUrl("HistoriaClinica", "HistoriaClinica", "editarHistorial",array("id_historiaclinica"=>$value['id']))."' class='btn btn-primary'>Editar</a></button>";
-                        echo " <input type='button' class='btn btn-danger' value='Eliminar' onclick='eliminarHistoria(".$value['id'].");'></td>";
+                        echo " <input type='button' class='btn btn-danger' value='Eliminar' onclick='eliminarUsuarios(".$value['id'].");'></td>";
                         echo "</td>";
                         echo "</tr>";
                     }
-                    /*
-                        foreach($productosBd as $producto){
-                            echo 
-                              "<tr>"
-                                . "<td>" . $producto['producto']['pro_nombre'] . "</td>"
-                                . "<td>" . $producto['producto']['pro_descripcion'] . "</td>"
-                                . "<td>" . $producto['producto']['pro_anio'] . "</td>"
-                                . "<td>" . $producto['producto']['pro_jugadores'] . "</td>"
-                                . "<td>"; 
-                            foreach($producto['genero'] as $genero){
-                                echo $genero['gen_descripcion']."<br>";
-                            } 
-                            echo "</td>"
-                                . "<td>"; 
-                            foreach($producto['plataforma'] as $plataforma){
-                                echo $plataforma['pla_descripcion']."<br>";
-                            } 
-                            echo "</td>"
-                                . "<td>" . $producto['producto']['pro_precio'] . "</td>"
-                                . "<td>" . $producto['producto']['pro_cantidad'] . "</td>"
-                                . "<td><button type='button' class='btn btn-success agregarCarrito' data-valor='" . $producto['producto']['pro_id'] . "' data-url='" . getUrl("Venta","Carrito","agregar",false,"ajax") . "'>Comprar</button></td>"
-                            . "</tr>";
-                        }
-                    */
                     ?>
                 </tbody>
             </table>
