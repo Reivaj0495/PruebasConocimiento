@@ -24,11 +24,18 @@ class UsuarioController{
     }
 
     public function editarUsuario(){
+        
         $Gst = new GstUsuario();
-        $datos = $Gst->ConsultarEmpleado($_POST['id']);
-        $datos = $Gst->getAreas();
+        $datos = $Gst->ConsultarEmpleado($_GET['id']);
+        $areas = $Gst->getAreas();
         $roles = $Gst->getRoles();
         include_once '../view/Usuario/Usuario/editar.php';
+    }
+
+    public function postEditarUsuario(){
+        $Gst = new GstUsuario();
+        $datos = $Gst->UpdateEmpleados($_POST);
+        return JSON_encode($datos);
     }
 
     public function postEliminarUsuario(){
@@ -36,7 +43,7 @@ class UsuarioController{
         $datos = $Gst->eliminarUsuario($_POST['id']);
         return JSON_encode($datos);
     }
-    
+
 
 
 }

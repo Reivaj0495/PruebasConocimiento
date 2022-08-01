@@ -35,16 +35,19 @@
                             <label>Sexo *</label>
                         
                             <div class="radio">
-                                <label>
-                                    <input type="radio" name="sexo" id="sexo" value="M">
-                                    Masculino
-                                </label>
-                                <label>
-                                    <input type="radio" name="sexo" id="sexo" value="F">
-                                    Femenino
-                                </label>
-                            </div>
-                            
+                            <label>
+                                <input type="radio" name="sexo" id="sexo" value="M">
+                                Masculino
+                            </label>
+                        </div>
+                        
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="sexo" id="sexo" value="F">
+                                Femenino
+                            </label>
+                        </div>
+                        <p class="help-block">Sexo del empleado.</p>
                 </div>            
 
             
@@ -92,7 +95,7 @@
             
             <div class="input-group">  
                 <div class="form-group col-md-5">
-                    <input type='button' class='btn btn-success btnCrearUsuario' value='Guardar' onclick='postFuncion()'>
+                    <input type='button' class='btn btn-success btnCrearUsuario' value='Guardar' onclick='postFuncion(1)'>
                 </div>
             </div>
         </div>

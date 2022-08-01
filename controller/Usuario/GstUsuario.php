@@ -9,7 +9,7 @@ Class GstUsuario{
         $ObjFuncion = new UsuarioModel();
 
         try{    
-            $sql="select id,nombre,email,sexo,area_id,boletin from empleado where id =".$id;
+            $sql="select id,nombre,email,sexo,area_id,boletin,descripcion from empleado where id =".$id;
             $datos = $ObjFuncion->consultarArray($sql);
         }catch(e){
             echo "Error al consultar empleado";
@@ -20,7 +20,7 @@ Class GstUsuario{
         return $datos;
     }
 
-    public function InsertarEmpleado($datos){
+    public function UpdateEmpleados($datos){
     
         $ObjFuncion = new UsuarioModel();
         
@@ -29,15 +29,14 @@ Class GstUsuario{
         $email = $datos['email'];
         $sexo = $datos['sexo'];
         $area_id = $datos['area_id'];
-        $boletin = $datos['boletin'];
-
+        
         $usuario = $this->ConsultarEmpleado($id_empleado);
 
-        if($usuario == null){
+        if($usuario != null){
 
             try{
-                $sql = "insert into empleado (id,nombre,email,sexo,area_id,boletin) values (".$id_empleado.",'".$nombre."','".$email."','".$sexo."',".$area_id.",".$boletin.")";
-                $respuesta = $ObjFuncion->insertar($sql);
+                $sql = "Update empleado set nombre = '".$nombre."', email = '".$email."', sexo = '".$sexo."', area_id = '".$area_id."' where id = ".$id_empleado;
+                $respuesta = $ObjFuncion->editar($sql);
                 $resultado = true;
             }catch(e){
                 echo "Error al insertar";
@@ -102,16 +101,6 @@ Class GstUsuario{
         $sql = "select id,nombre from roles";
         $datos = $ObjFuncion->consultarArray($sql);
         return $datos;
-    }
-
-    public function EditarHistoria($datos){
-        $ObjFuncion = new UsuarioModel();
-        $id = $datos['id'];
-        $id_mascota = $datos['id_mascota'];
-        $fecha = $datos['fecha'];
-        $sql ="update historia_clinica set id_mascota = $id_mascota, fecha_creacion ='$fecha' where id=".$id;
-        $resultado = $ObjFuncion->editar($sql);
-        return $resultado;
     }
 
     public function eliminarUsuario($id){

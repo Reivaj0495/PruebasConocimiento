@@ -61,7 +61,7 @@
 /* 
     Este codigo se encarga del cambio de estado del usuario por medio del click en el boton
 */  
-    function postFuncion(){
+    function postFuncion($ejecutar){
     let nombre = document.getElementById('nombre').value;
     let correo = document.getElementById('email').value;
     let sexo = $('input[name="sexo"]:checked').val();
@@ -103,12 +103,22 @@
       document.getElementById('rol').focus();
       return false;
     }
+    
+    if($ejecutar == '1'){
+        postCrearUsuario(nombre,correo,sexo,area,descripcion,rol);
+    }else{
+      $id_empleado = document.getElementById('id_empleado').value;
+      if($id_empleado == "" || $id_empleado == null || $id_empleado == undefined || Number.isInteger($id_empleado)){
+        alert("Error: El campo id_empleado no puede estar vacio");
+      }else{
+        posteditarUsuarioid(nombre,correo,sexo,area,descripcion,rol,id_empleado);
+      }
+    }
       
-      postCrearUsuario(nombre,correo,sexo,area,descripcion,rol);
     }
     
     function postCrearUsuario(nombre,correo,sexo,area,descripcion,rol){
-      //$(".btnCrearUsuario").attr("disabled", true);
+      $(".btnCrearUsuario").attr("disabled", true);
       let boletin = document.getElementById('boletin');
       
       if (boletin.checked) {
@@ -181,37 +191,66 @@
         });
     }
 
-    function eliminarDetalleHistoria(id){
-    var id_dato = id;
-    Swal.fire({
-      title: 'seguro quieres eliminar?',
-      text: "No podras revertir esto!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, eliminar esto!'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            eliminarDelleHistorialClinica(id_dato);
-            Swal.fire(
-              'Eliminado!',
-              'El detalle ha sido eliminado.',
-              'success'
-             )
-          }
-    })
+    function editarUsuario(id){
+      var id_dato = id;
+      Swal.fire({
+        title: 'seguro quieres editar?',
+        text: "Te llevara a la pagina de editar!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, editar esto!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              editarUsuarioid(id_dato);
+            }
+      })
     }
-    function eliminarDelleHistorialClinica(id){
- 
-      var url = "index.php?modulo=DetalleHistoriaClinica&controlador=DetalleHistoriaClinica&funcion=eliminarDetalleHistoria";
-        $.ajax({
-            type:"GET",
-            url:url,
-            data:{id},
-            success:function(respuesta){
-               setTimeout('document.location.reload()',1000);
+
+    function editarUsuarioid(id_dato){  
+
+      var url = "index.php?modulo=Usuario&controlador=Usuario&funcion=editarUsuario&id="+id_dato;
+      window.location.replace(url);
+      
+      
+    }
+
+    
+
+  function posteditarUsuarioid(nombre,correo,sexo,area,descripcion,rol,id_empleado){  
+
+    //$(".btnEditarUsuario").attr("disabled", true);
+      data = { "nombre" : nombre,
+              "correo" : correo,
+              "sexo" : sexo,
+              "area" : area,
+              "descripcion" : descripcion,
+              "rol" : rol,
+              "id_empleado" : id_empleado
+            };
+
+      
+      $.ajax({
+            type:"post",
+            url: "index.php?modulo=Usuario&controlador=Usuario&funcion=postEditarUsuario",
+            data: data,
+            success:function(result){
+                alertProcess('Notificación',"Se edito correctamente",'success');
+                
+                url = 'index.php?modulo=Usuario&controlador=Usuario&funcion=listarUsuario';
+                setTimeout(redirect(url)
+                ,4000);
+                
+                   
+            }, error :function(result){
+                alertProcess('Notificación',"No se pudo editar usuario",'error');
+                setTimeout('document.location.reload()',2000);
             }
         });
-    }
+   
+    
+    
+  }
+    
     
