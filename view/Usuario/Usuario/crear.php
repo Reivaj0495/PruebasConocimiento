@@ -1,5 +1,5 @@
 
-<form rule="formCrearUsuario" name="formCrearUsuario" id="formCrearUsuario" method="post" enctype="multipart/form-data">
+<form rule="formCrearUsuario" name="formCrearUsuario" id="formCrearUsuario" action="postCrearUsuario" method="post" enctype="multipart/form-data">
     
     
         <div class="form-group">
@@ -15,13 +15,13 @@
 
                 <div class="form-group col-xl-5 col-md-5">
                     <label>Nombre Completo *</label>
-                    <input class="form-control" name="nombre" placeholder="Nombre" type="text" required="required">
+                    <input class="form-control" name="nombre" id="nombre" placeholder="Nombre" type="text" required="required">
                     <p class="help-block">Nombre del empleado.</p>
                 </div>
 
                 <div class="form-group col-xl-5 col-md-5">
                     <label>Correo Electrónico *</label>
-                    <input class="form-control" name="email" type="email" placeholder="Correo" required="required">
+                    <input class="form-control" name="email" id="email" type="email" placeholder="Correo" required="required">
                     <p class="help-block">Correo del empleado.</p>
                 </div>
                  
@@ -36,17 +36,15 @@
                         
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="sexo" value="M" checked>
+                                    <input type="radio" name="sexo" id="sexo" value="M">
                                     Masculino
                                 </label>
-                            </div>
-                            
-                            <div class="radio">
                                 <label>
-                                    <input type="radio" name="sexo" value="F">
+                                    <input type="radio" name="sexo" id="sexo" value="F">
                                     Femenino
                                 </label>
                             </div>
+                            
                 </div>            
 
             
@@ -76,7 +74,7 @@
                     <?php foreach ($roles as $key => $val) { ?>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="rol" value="<?php echo $val['id']; ?>" checked>
+                                <input type="radio" name="rol" id="rol" value="<?php echo $val['id']; ?>">
                                 <?php echo $val['nombre']; ?>
                             </label>
                         </div>
@@ -87,16 +85,17 @@
             
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="boletin" value="1" checked>
+                            <input type="checkbox" name="boletin" id="boletin">
                             Deseo recibir boletin informativo
                         </label>
                     </div>
             
             <div class="input-group">  
                 <div class="form-group col-md-5">
-                    <button type="submit" class="btn btn-primary" onclick="postFuncion()">Guardar</button>
+                    <input type='button' class='btn btn-success btnCrearUsuario' value='Guardar' onclick='postFuncion()'>
                 </div>
             </div>
         </div>
  </form>
 
+<script type="text/javascript" src="../web/js/funcionesJs/funciones.js"> </script>

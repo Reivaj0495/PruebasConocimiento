@@ -33,7 +33,8 @@
                         }
                         echo "<td>".$value['area_descripcion']."</td>";
                         echo "<td>".$value['boletin']."</td>";
-                        echo "<td> <a href='".getUrl("HistoriaClinica", "HistoriaClinica", "editarHistorial",array("id_historiaclinica"=>$value['id']))."' class='btn btn-primary'>Editar</a></button>";
+                        echo "<td>" ;
+                        echo "<input type='button' class='btn btn-primary' value='Editar' onclick='editarUsuarios(".$value['id'].");'>";
                         echo " <input type='button' class='btn btn-danger' value='Eliminar' onclick='eliminarUsuarios(".$value['id'].");'></td>";
                         echo "</td>";
                         echo "</tr>";

@@ -36,7 +36,7 @@ class UsuarioController{
         $datos = $Gst->eliminarUsuario($_POST['id']);
         return JSON_encode($datos);
     }
-
+    
 
 
 }

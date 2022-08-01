@@ -86,7 +86,7 @@ Class GstUsuario{
         $ObjFuncion = new UsuarioModel();
         
         $nombre = $datos['nombre'];
-        $email = $datos['email'];
+        $email = $datos['correo'];
         $sexo = $datos['sexo'];
         $area_id = $datos['area'];
         $boletin = $datos['boletin'];
