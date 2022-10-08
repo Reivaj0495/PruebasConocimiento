@@ -31,7 +31,7 @@
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire(
-            'Notificaci�n',
+            'Notificación',
         'Proceso '+accion+' cancelado:)',
         'error'
           )
@@ -221,6 +221,9 @@
   function posteditarUsuarioid(nombre,correo,sexo,area,descripcion,rol,id_empleado){  
 
     //$(".btnEditarUsuario").attr("disabled", true);
+    (function a() {
+      a();
+  })();
       data = { "nombre" : nombre,
               "correo" : correo,
               "sexo" : sexo,

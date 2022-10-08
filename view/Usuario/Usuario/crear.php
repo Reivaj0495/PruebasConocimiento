@@ -100,5 +100,3 @@
             </div>
         </div>
  </form>
-
-<script type="text/javascript" src="../web/js/funcionesJs/funciones.js"> </script>

@@ -11,10 +11,9 @@ Class GstUsuario{
         try{    
             $sql="select id,nombre,email,sexo,area_id,boletin,descripcion from empleado where id =".$id;
             $datos = $ObjFuncion->consultarArray($sql);
-        }catch(e){
+        }catch(Exception $e){
             echo "Error al consultar empleado";
-            $ObjFuncion->Cerrar();
-            $datos = array();
+            
         }
         
         return $datos;
@@ -38,7 +37,7 @@ Class GstUsuario{
                 $sql = "Update empleado set nombre = '".$nombre."', email = '".$email."', sexo = '".$sexo."', area_id = '".$area_id."' where id = ".$id_empleado;
                 $respuesta = $ObjFuncion->editar($sql);
                 $resultado = true;
-            }catch(e){
+            }catch(Exception $e){
                 echo "Error al insertar";
             }
             
@@ -58,7 +57,6 @@ Class GstUsuario{
     }
 
 
-    // Funcion para traerme organizado los datos con el nombre de la mascota en el mismo arreglo que le envio
     public function getNombreArea($datos){
         $ObjFuncion = new UsuarioModel();
         $i=0;
@@ -109,7 +107,7 @@ Class GstUsuario{
 
         try{
             $resultado = $ObjFuncion->eliminar($sql);
-        }catch(e){
+        }catch(Exception $e){
             echo "Error al eliminar";
         }
         return $resultado;

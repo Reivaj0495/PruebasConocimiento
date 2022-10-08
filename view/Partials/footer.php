@@ -16,15 +16,14 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-    <script src="js/funcionesJs/funciones.js"></script>
-
+    <script src="js/sb-admin-2.min.js"></script> 
+    
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <!-- <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script> -->
 
     <!-- Sweet Alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -32,6 +31,6 @@
 
     <!-- funciones Js Propias -->
     <script src="../web/js/funcionesJs/funciones.js"></script>
-
+    <script src="../web/js/productoJs/producto.js"> </script>
     
 </body>
