@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `areas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Volcar la base de datos para la tabla `areas`
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `empleado` (
   `descripcion` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `area_id` (`area_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Volcar la base de datos para la tabla `empleado`
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `empleado_rol` (
   `rol_id` int(11) NOT NULL,
   KEY `empleado_id` (`empleado_id`),
   KEY `rol_id` (`rol_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcar la base de datos para la tabla `empleado_rol`
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `prod_stock` int(100) NOT NULL,
   `prod_fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_prod`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Volcar la base de datos para la tabla `producto`
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Volcar la base de datos para la tabla `roles`
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `ventas` (
   `vnt_prec_total_prod` int(11) NOT NULL,
   `vnt_fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_vent`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
 
 --
 -- Volcar la base de datos para la tabla `ventas`

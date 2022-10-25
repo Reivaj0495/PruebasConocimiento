@@ -8,7 +8,7 @@
     
         <div class="form-group">
             
-            <table class="table table-bordered table-striped border-primary">
+            <table class="table table-bordered table-striped dataTable border-primary" id="dataTable" name="dataTable">
                 <thead>
                     <tr>
                         <th><i class="fas fa-cart-plus"></i> Producto </th>
